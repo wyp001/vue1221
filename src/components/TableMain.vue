@@ -49,35 +49,48 @@
 </template>
 
 <script>
-    export default {
-        name: "TableMain",
-        data(){
-          return{
-            tableData: [
-              {"name":"赵伟","tel":"156*****1987","hobby":"钢琴、书法、唱歌","address":"上海市黄浦区金陵东路569号17楼"},
-              {"name":"李伟","tel":"182*****1538","hobby":"钢琴、书法、唱歌","address":"上海市奉贤区南桥镇立新路12号2楼"},
-              {"name":"孙伟","tel":"161*****0097","hobby":"钢琴、书法、唱歌","address":"上海市崇明县城桥镇八一路739号"},
-              {"name":"周伟","tel":"197*****1123","hobby":"钢琴、书法、唱歌","address":"上海市青浦区青浦镇章浜路24号"},
-              {"name":"吴伟","tel":"183*****6678","hobby":"钢琴、书法、唱歌","address":"上海市松江区乐都西路867-871号"},
-              {"name":"赵伟","tel":"156*****1987","hobby":"钢琴、书法、唱歌","address":"上海市黄浦区金陵东路569号17楼"},
-              {"name":"李伟","tel":"182*****1538","hobby":"钢琴、书法、唱歌","address":"上海市奉贤区南桥镇立新路12号2楼"},
-              {"name":"孙伟","tel":"161*****0097","hobby":"钢琴、书法、唱歌","address":"上海市崇明县城桥镇八一路739号"},
-              {"name":"周伟","tel":"197*****1123","hobby":"钢琴、书法、唱歌","address":"上海市青浦区青浦镇章浜路24号"},
-              {"name":"吴伟","tel":"183*****6678","hobby":"钢琴、书法、唱歌","address":"上海市松江区乐都西路867-871号"}
-            ],
-            columns: [
-              {field: 'name', title: '姓名', width: 80, titleAlign: 'center', columnAlign: 'center',isResize:true},
-              {field: 'tel', title: '手机号码', width: 150, titleAlign: 'center', columnAlign: 'center',isResize:true},
-              {field: 'hobby', title: '爱好', width: 150, titleAlign: 'center', columnAlign: 'center',isResize:true},
-              {field: 'address', title: '地址', width: 280, titleAlign: 'center', columnAlign: 'left',isResize:true}
-            ]
-          }
-        }
+  export default {
+    name: "TableMain",
+    data() {
+      return {
+        tableData: [
+          // {"name":"赵伟","tel":"156*****1987","hobby":"钢琴、书法、唱歌","address":"上海市黄浦区金陵东路569号17楼"},
+          // {"name":"李伟","tel":"182*****1538","hobby":"钢琴、书法、唱歌","address":"上海市奉贤区南桥镇立新路12号2楼"},
+          // {"name":"孙伟","tel":"161*****0097","hobby":"钢琴、书法、唱歌","address":"上海市崇明县城桥镇八一路739号"},
+          // {"name":"周伟","tel":"197*****1123","hobby":"钢琴、书法、唱歌","address":"上海市青浦区青浦镇章浜路24号"},
+          // {"name":"吴伟","tel":"183*****6678","hobby":"钢琴、书法、唱歌","address":"上海市松江区乐都西路867-871号"},
+          // {"name":"赵伟","tel":"156*****1987","hobby":"钢琴、书法、唱歌","address":"上海市黄浦区金陵东路569号17楼"},
+          // {"name":"李伟","tel":"182*****1538","hobby":"钢琴、书法、唱歌","address":"上海市奉贤区南桥镇立新路12号2楼"},
+          // {"name":"孙伟","tel":"161*****0097","hobby":"钢琴、书法、唱歌","address":"上海市崇明县城桥镇八一路739号"},
+          // {"name":"周伟","tel":"197*****1123","hobby":"钢琴、书法、唱歌","address":"上海市青浦区青浦镇章浜路24号"},
+          // {"name":"吴伟","tel":"183*****6678","hobby":"钢琴、书法、唱歌","address":"上海市松江区乐都西路867-871号"}
+        ],
+        columns: [
+          {field: 'id', title: '序号', width: 80, titleAlign: 'center', columnAlign: 'center',isResize:true},
+          {field: 'username', title: '姓名', width: 80, titleAlign: 'center', columnAlign: 'center', isResize: true},
+          {field: 'zone', title: '地址', width: 280, titleAlign: 'center', columnAlign: 'left', isResize: true},
+          {field: 'email', title: '邮箱', width: 150, titleAlign: 'center', columnAlign: 'center', isResize: true},
+          {field: 'sex', title: '性别', width: 280, titleAlign: 'center', columnAlign: 'left', isResize: true},
+
+          {field: 'phone', title: '手机号', width: 80, titleAlign: 'center', columnAlign: 'center',isResize:true},
+          {field: 'createTime', title: '日期', width: 150, titleAlign: 'center', columnAlign: 'center', isResize: true}
+        ]
+      }
+    },
+    created() {
+      //在created函数中使用axios的get请求向后台获取用户信息数据
+      this.$ajax('http://127.0.0.1:8888/vue-demo/persion/getList').then(res => {
+        this.tableData = res.data
+        console.log(res.data);
+      }).catch(function (error) {
+        console.log(error);
+      });
     }
+  }
 </script>
 
 <style scoped>
-  .layout{
+  .layout {
     border: 1px solid #d7dde4;
     background: #f5f7f9;
     position: relative;
@@ -85,7 +98,8 @@
     overflow: hidden;
     height: 100%;
   }
-  .layout-logo{
+
+  .layout-logo {
     width: 100px;
     height: 30px;
     background: #5b6270;
@@ -98,12 +112,15 @@
     text-align: center;
     color: #49ffcc;
   }
-  .layout-nav{
+
+  .layout-nav {
     width: 420px;
     margin: 0 auto;
     margin-right: 20px;
   }
-  .layout-footer-center{
+
+  .layout-footer-center {
     text-align: center;
   }
 </style>
+
