@@ -6,6 +6,8 @@ import A from '@/components/componentA'
 import B from '@/components/componentB'
 import C from '@/components/componentC'
 import  VantCom from '@/components/VantComponent'
+import  TableMain from '@/components/TableMain'
+
 
 Vue.use(Router)
 
@@ -31,5 +33,11 @@ export default new Router({
       name: 'C',
       component: C
     },
+    {
+      path: '/tableData',
+      name: 'TableMain',
+      component: TableMain
+    }
+
   ]
 })
