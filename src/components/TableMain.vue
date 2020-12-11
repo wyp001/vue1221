@@ -71,7 +71,6 @@
           {field: 'zone', title: '地址', width: 280, titleAlign: 'center', columnAlign: 'left', isResize: true},
           {field: 'email', title: '邮箱', width: 150, titleAlign: 'center', columnAlign: 'center', isResize: true},
           {field: 'sex', title: '性别', width: 280, titleAlign: 'center', columnAlign: 'left', isResize: true},
-
           {field: 'phone', title: '手机号', width: 80, titleAlign: 'center', columnAlign: 'center',isResize:true},
           {field: 'createTime', title: '日期', width: 150, titleAlign: 'center', columnAlign: 'center', isResize: true}
         ]
